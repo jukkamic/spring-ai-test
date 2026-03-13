@@ -1,8 +1,16 @@
-## VSCode
+# Spring MCP scaffolding in a construction site
+
+We've got Spring AI to setup MCP server that Cline (or probably any) extension can access **even when not running**.
+
+It can give Cline insights into code or the database, or anything. 
+
+This is an MCP within the project we are working on.
+
+## VSCode settings
 
 ### Java compiler settings
 
-Copy this into .vscode/settings.json
+Copy this into **.vscode/settings.json**
 
 Just so Java might work with Maven as it's supposed to.
 
@@ -49,9 +57,10 @@ mvn compile
 mvn dependency:copy-dependencies
 ```
 
+**No need to run anything!** 
+
 Tell Cline: "Ask the construction site about it's health"
 
-**No need to run anything!** 
 Cline finds the classes in the directory configured in the mcpServers JSON configuration. 
 
 In the future you won't need to copy dependencies unless of course you run *clean* or they change.
