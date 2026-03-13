@@ -50,7 +50,7 @@ Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 }
 ```
 
-### Build -- and we're talking!
+# Build -- and we're talking!
 
 ```bash
 mvn compile
