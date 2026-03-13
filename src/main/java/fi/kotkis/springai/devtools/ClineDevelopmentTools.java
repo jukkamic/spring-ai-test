@@ -1,4 +1,4 @@
-package fi.kotkis.springai;
+package fi.kotkis.springai.devtools;
 
 import java.util.Arrays;
 import java.util.List;
