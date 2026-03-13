@@ -42,6 +42,7 @@ public class DevHealthTools {
                         }
                     });
         } catch (IOException e) {
+            log.error("Error walking filesystem: " + e.getMessage());
             return "Error walking filesystem: " + e.getMessage();
         }
 

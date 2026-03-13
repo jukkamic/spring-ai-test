@@ -4,7 +4,7 @@
 
 Copy this into .vscode/settings.json
 
-It give the vmarg to Java that we're using dev profile.
+It gives the vmarg to Java that we're using dev profile.
 
 ```json
 {
@@ -38,3 +38,13 @@ You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java:
   }
 }
 ```
+
+### Build -- and we're talking!
+
+```bash
+mvn clean install -Pdev
+```
+
+Tell Cline: "Ask java-construction-site about it's health"
+
+**No need to run anything!** Cline finds the .jar in the directory configured in the mcpServers JSON configuration. 
