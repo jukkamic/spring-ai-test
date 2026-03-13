@@ -18,7 +18,19 @@ public class DevHealthTools {
 
     @McpTool(description = "Check project health")
     public String checkHealth() {
-        return "Construction site is active!";
+        return "Construction site is active! Nice!";
+    }
+
+    @McpTool(description = "Refresh the project by shutting down the server so Cline is forced to restart it with new code")
+    public String rebootServer() {
+        new Thread(() -> {
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+            }
+            System.exit(0);
+        }).start();
+        return "Shutting down... Please wait for Cline to auto-restart me.";
     }
 
     @McpTool(description = "Check if all Java files have package declarations")

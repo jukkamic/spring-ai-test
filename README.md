@@ -4,19 +4,21 @@
 
 Copy this into .vscode/settings.json
 
-It gives the vmarg to Java that we're using dev profile.
+Just so Java might work with Maven as it's supposed to.
 
 ```json
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.import.maven.enabled": true
+    "java.import.maven.enabled": true,
+    "java.autobuild.enabled": true,
 }
 ```
 
 You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java: Clean Java Language Server Workspace".
 
-
 ### Cline MCP settings
+
+Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 
 ```json  
 {
@@ -31,8 +33,9 @@ You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java:
         "-Dlogging.level.root=OFF",
         "-Dlogging.pattern.console=",
         "-Dspring.ai.mcp.server.stdio.log-to-stderr=true",
-        "-jar",
-        "/ABSOLUTE/PATH/TO/target/restservice-0.0.1-SNAPSHOT.jar"
+        "-cp",
+        "C:/<ABSOLUTE_PATH>/target/classes;C:/<ABSOLUTE_PATH>/target/dependency/*",
+        "fi.kotkis.springai.RestServiceApplication"
       ]
     }
   }
@@ -42,9 +45,13 @@ You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java:
 ### Build -- and we're talking!
 
 ```bash
-mvn clean install -Pdev
+mvn compile
+mvn dependency:copy-dependencies
 ```
 
-Tell Cline: "Ask java-construction-site about it's health"
+Tell Cline: "Ask the construction site about it's health"
 
-**No need to run anything!** Cline finds the .jar in the directory configured in the mcpServers JSON configuration. 
+**No need to run anything!** 
+Cline finds the classes in the directory configured in the mcpServers JSON configuration. 
+
+In the future you won't need to copy dependencies unless of course you run *clean* or they change.
