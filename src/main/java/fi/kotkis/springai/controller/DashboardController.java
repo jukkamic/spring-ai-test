@@ -46,4 +46,13 @@ public class DashboardController {
         
         return "redirect:/";
     }
+
+    @PostMapping("/categories/add")
+    public String addCategory(@RequestParam String name) {
+        if (name != null && !name.trim().isEmpty()) {
+            Category category = new Category(name.trim());
+            categoryRepository.save(category);
+        }
+        return "redirect:/";
+    }
 }

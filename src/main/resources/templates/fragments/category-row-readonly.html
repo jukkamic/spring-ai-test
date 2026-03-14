@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="row(category)">
+    <tr th:id="'category-row-' + ${category.id}" class="hover:bg-slate-50 transition-colors">
+        <td class="px-6 py-4">
+            <div class="text-sm font-medium text-slate-900" th:text="${category.name}">Category Name</div>
+        </td>
+        <td class="px-6 py-4">
+            <div class="text-sm text-slate-500" th:text="${category.materials.size()}">0</div>
+        </td>
+        <td class="px-6 py-4">
+            <button 
+                th:attr="hx-get=@{/categories/{id}/edit(id=${category.id})}, hx-target='#category-row-' + ${category.id}, hx-swap='outerHTML'"
+                hx-get="/categories/1/edit"
+                hx-target="#category-row-1"
+                hx-swap="outerHTML"
+                class="inline-flex items-center px-3 py-1.5 border border-slate-300 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-colors">
+                Edit
+            </button>
+        </td>
+    </tr>
+</th:block>
+</html>
