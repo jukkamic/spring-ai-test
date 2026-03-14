@@ -22,6 +22,10 @@ public class Material {
 
     private LocalDate expiryDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     // Default constructor required by JPA
     public Material() {
     }
@@ -80,5 +84,13 @@ public class Material {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

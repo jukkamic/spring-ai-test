@@ -59,13 +59,47 @@ Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
         "-Dspring.ai.mcp.server.stdio=true",
         "-Dspring.ai.mcp.server.stdio.log-to-stderr=true",
         "-cp",
-        "C:/dev/spring-ai-test/target/classes;C:/dev/spring-ai-test/target/dependency/*",
+        "C:/ABSOLUTE_PATH/target/classes;C:/ABSOLUTE_PATH/target/dependency/*",
         "fi.kotkis.springai.RestServiceApplication"
       ],
       "autoApprove": []
     }
   }
 }
+```
+
+## Spring properties
+in src/main/resources/ create application-dev-properties:
+
+```bash
+# ==========================================================
+# CONSTRUCTION SITE CONFIGURATION (MCP & DEV)
+# ==========================================================
+
+# MCP SERVER SETTINGS
+# Enable the standard I/O transport that Cline/Claude Desktop expect
+spring.ai.mcp.server.stdio=true
+spring.ai.mcp.server.name=java-construction-site
+spring.ai.mcp.server.version=1.0.0
+
+# THE "SILENCE" SETTINGS (Critical for STDIO)
+# Disable the Spring Boot ASCII Art banner
+spring.main.banner-mode=off
+# Don't start Tomcat/Netty; it's faster and avoids port conflicts
+spring.main.web-application-type=servlet
+
+# DATABASE (Scaffolding Source)
+
+# Using H2 for the construction site makes it zero-config
+# spring.datasource.url=jdbc:h2:mem:construction_db;DB_CLOSE_DELAY=-1
+
+# Change from memory (mem:ledgerdb) to file (file:./data/ledgerdb)
+spring.datasource.url=jdbc:h2:file:./data/ledgerdb;DB_CLOSE_DELAY=-1
+
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.h2.console.enabled=true
 ```
 
 # Build... and we're talking!

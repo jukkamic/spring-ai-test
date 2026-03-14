@@ -20,13 +20,7 @@
 		<!-- Spring AI version for milestone releases -->
 		<spring-ai.version>2.0.0-M2</spring-ai.version>
 		<!-- Test framework versions -->
-		<mockito.version>5.14.2</mockito.version>
 		<maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
-		<!-- Lombok version (inherited from parent if not specified) -->
-		<lombok.version>1.18.34</lombok.version>
-		<!-- Common JVM args for Mockito inline mock maker -->
-		<mockito.javaagent>
-			-javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar</mockito.javaagent>
 	</properties>
 
 	<!-- Add Spring Milestone repository for Spring AI milestone releases -->
@@ -120,37 +114,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<!-- 
-				The following plugin configuration enables Mockito to work with inline mock maker.
-				
-				See why this is necessary:
-				https://rieckpil.de/how-to-configure-mockito-agent-for-java-21-without-warning/
-				
-				Without this you get the warning:
-				"Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in
-				future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's
-				documentation:"
-				https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/org/mockito/Mockito.html#0.3
-			-->
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<argLine>${mockito.javaagent}</argLine>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<argLine>${mockito.javaagent}</argLine>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
