@@ -16,7 +16,7 @@ public class DatabaseInspectorService {
     public String getSchemaDetails() {
         try {
             // Query H2's internal metadata for the PUBLIC schema (where your entities live)
-            String sql = "SELECT TABLE_NAME, COLUMN_NAME, TYPE_NAME " +
+            String sql = "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE " +
                     "FROM INFORMATION_SCHEMA.COLUMNS " +
                     "WHERE TABLE_SCHEMA = 'PUBLIC' " +
                     "ORDER BY TABLE_NAME, ORDINAL_POSITION";
@@ -33,7 +33,7 @@ public class DatabaseInspectorService {
             for (Map<String, Object> row : rows) {
                 String tableName = (String) row.get("TABLE_NAME");
                 String columnName = (String) row.get("COLUMN_NAME");
-                String dataType = (String) row.get("TYPE_NAME");
+                String dataType = (String) row.get("DATA_TYPE");
 
                 // Print the table name header when it changes
                 if (!tableName.equals(currentTable)) {
