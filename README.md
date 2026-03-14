@@ -107,7 +107,7 @@ spring.h2.console.enabled=true
 # Build... and we're talking!
 
 ```bash
-mvn compile -Pdev
+mvn compile
 mvn dependency:copy-dependencies
 ```
 
@@ -118,6 +118,14 @@ Tell Cline: "Ask the construction site about it's health"
 Cline finds the classes in the directory configured in the mcpServers JSON configuration. 
 
 In the future you won't need to copy dependencies unless of course you run *clean* or they change.
+
+## Run the UI without the scaffolding
+
+```bash
+mvn clean compile -Ptest
+mvn dependency:copy-dependencies -Ptest
+mvn spring-boot:run -Ptest
+```
 
 
 # Troubleshooting
