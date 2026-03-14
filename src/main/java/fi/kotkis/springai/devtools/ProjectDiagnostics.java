@@ -2,6 +2,7 @@ package fi.kotkis.springai.devtools;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springaicommunity.mcp.annotation.McpTool;
 import org.springframework.context.ApplicationContext;
@@ -27,9 +28,14 @@ public class ProjectDiagnostics {
         return dbInspector.getSchemaDetails();
     }
 
-    @McpTool(description = "Returns the internal Spring Bean names for debugging context")
-    public List<String> listInternalBeans() {
-        return Arrays.asList(context.getBeanDefinitionNames());
+    @McpTool(description = "Returns our custom Spring Bean names for the construction ledger")
+    public List<String> listProjectBeans() {
+        return Arrays.stream(context.getBeanDefinitionNames())
+                // Filter for your package to hide the Spring infrastructure noise
+                .filter(name -> name.contains("fi.kotkis") ||
+                        !name.contains(".")) // Also show short names like "materialController"
+                .sorted()
+                .collect(Collectors.toList());
     }
 
 }

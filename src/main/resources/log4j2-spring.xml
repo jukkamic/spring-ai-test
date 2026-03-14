@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_FILE">logs/construction-site.log</Property>
+    </Properties>
+
     <Appenders>
-        <Console name="Console" target="SYSTEM_ERR">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <Console name="ConsoleDev" target="SYSTEM_ERR">
+            <PatternLayout pattern="${LOG_PATTERN}" />
         </Console>
-        
-        <File name="File" fileName="logs/dev-construction.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </File>
+
+        <Console name="ConsoleProd" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+
+        <RollingFile name="FileLog" fileName="${LOG_FILE}" filePattern="logs/construction-site-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
     </Appenders>
 
     <Loggers>
-        <Root level="WARN">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="File"/>
-        </Root>
+        <SpringProfile name="dev">
+            <Logger name="fi.kotkis.springai" level="debug" additivity="false">
+                <AppenderRef ref="ConsoleDev" level="info" />
+                <AppenderRef ref="FileLog" level="debug" />
+            </Logger>
+
+            <Root level="info">
+                <AppenderRef ref="ConsoleDev" level="warn" />
+                <AppenderRef ref="FileLog" level="info" />
+            </Root>
+        </SpringProfile>
+
+        <SpringProfile name="prod">
+            <Root level="info">
+                <AppenderRef ref="ConsoleProd" level="info" />
+                <AppenderRef ref="FileLog" level="warn" />
+            </Root>
+        </SpringProfile>
     </Loggers>
 </Configuration>
