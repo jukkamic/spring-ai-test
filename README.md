@@ -49,19 +49,20 @@ Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 {
   "mcpServers": {
     "java-construction-site": {
+      "disabled": false,
+      "timeout": 60,
+      "type": "stdio",
       "command": "java",
       "args": [
         "-Dspring.profiles.active=dev",
         "-Dspring.main.banner-mode=off",
-        "-Dspring.main.web-application-type=none",
         "-Dspring.ai.mcp.server.stdio=true",
-        "-Dlogging.level.root=OFF",
-        "-Dlogging.pattern.console=",
         "-Dspring.ai.mcp.server.stdio.log-to-stderr=true",
         "-cp",
-        "C:/<ABSOLUTE_PATH>/target/classes;C:/<ABSOLUTE_PATH>/target/dependency/*",
+        "C:/dev/spring-ai-test/target/classes;C:/dev/spring-ai-test/target/dependency/*",
         "fi.kotkis.springai.RestServiceApplication"
-      ]
+      ],
+      "autoApprove": []
     }
   }
 }
