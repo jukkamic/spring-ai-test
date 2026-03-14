@@ -84,3 +84,6 @@ tmp/
 *.swp
 *~.nib
 local.properties
+
+# Database
+data/

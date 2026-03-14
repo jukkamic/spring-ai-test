@@ -1,6 +1,7 @@
 package fi.kotkis.springai.domain;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "materials")
@@ -19,6 +20,8 @@ public class Material {
     @Column(nullable = false)
     private Boolean isDelivered;
 
+    private LocalDate expiryDate;
+
     // Default constructor required by JPA
     public Material() {
     }
@@ -28,6 +31,14 @@ public class Material {
         this.name = name;
         this.quantity = quantity;
         this.isDelivered = isDelivered;
+    }
+
+    // Constructor with fields including expiryDate
+    public Material(String name, Integer quantity, Boolean isDelivered, LocalDate expiryDate) {
+        this.name = name;
+        this.quantity = quantity;
+        this.isDelivered = isDelivered;
+        this.expiryDate = expiryDate;
     }
 
     // Getters and Setters
@@ -61,5 +72,13 @@ public class Material {
 
     public void setIsDelivered(Boolean isDelivered) {
         this.isDelivered = isDelivered;
+    }
+
+    public LocalDate getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 }
