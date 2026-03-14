@@ -69,7 +69,9 @@ Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 ```
 
 ## Spring properties
-in src/main/resources/ create application-dev-properties:
+in src/main/resources/ create application-dev-properties. 
+
+**NOTE:** Again, replace ABSOLUTE_PATH
 
 ```bash
 # ==========================================================
@@ -94,7 +96,7 @@ spring.main.web-application-type=servlet
 # spring.datasource.url=jdbc:h2:mem:construction_db;DB_CLOSE_DELAY=-1
 
 # Change from memory (mem:ledgerdb) to file (file:./data/ledgerdb)
-spring.datasource.url=jdbc:h2:file:./data/ledgerdb;DB_CLOSE_DELAY=-1
+spring.datasource.url=jdbc:h2:file:C:/ABSOLUTE_PATH/spring-ai-test/data/ledgerdb;DB_CLOSE_DELAY=-1
 
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
