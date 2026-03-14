@@ -64,3 +64,9 @@ Tell Cline: "Ask the construction site about it's health"
 Cline finds the classes in the directory configured in the mcpServers JSON configuration. 
 
 In the future you won't need to copy dependencies unless of course you run *clean* or they change.
+
+
+## Troubleshooting
+
+### Refreshing Cline's MCP after compile
+When you run mvn compile there's little chance that Cline will notice anything changed. You will need to refresh Cline's MCP tool configuration.

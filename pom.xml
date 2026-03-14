@@ -67,10 +67,6 @@
 					<groupId>org.springframework.ai</groupId>
 					<artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
 				</dependency>
-				<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-jdbc</artifactId>
-				</dependency>
 			</dependencies>
 		</profile>
 	</profiles>
@@ -102,18 +98,16 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
 
 		<!-- Logging -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

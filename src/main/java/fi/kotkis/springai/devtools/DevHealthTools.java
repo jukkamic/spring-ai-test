@@ -5,16 +5,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springaicommunity.mcp.annotation.McpTool;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j // Lombok generates: private static final org.slf4j.Logger log = ...
 @Component
 @Profile("dev")
 public class DevHealthTools {
+
+
+    private static final Logger log = LoggerFactory.getLogger(DevHealthTools.class);
 
     @McpTool(description = "Check project health")
     public String checkHealth() {
