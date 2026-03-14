@@ -43,6 +43,8 @@ You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java:
 
 ## Cline MCP settings
 
+In Cline panel's title bar click "MCP Servers" (small icon next to plus sign), select Configure tab and click Configure MCP Servers.
+
 Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 
 ```json  
@@ -69,39 +71,10 @@ Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 ```
 
 ## Spring properties
-in src/main/resources/ create application-dev-properties. 
-
-**NOTE:** Again, replace ABSOLUTE_PATH
+Edit /main/resources/application-test.properties, change **ABSOLUTE_PATH**
 
 ```bash
-# ==========================================================
-# CONSTRUCTION SITE CONFIGURATION (MCP & DEV)
-# ==========================================================
-
-# MCP SERVER SETTINGS
-# Enable the standard I/O transport that Cline/Claude Desktop expect
-spring.ai.mcp.server.stdio=true
-spring.ai.mcp.server.name=java-construction-site
-spring.ai.mcp.server.version=1.0.0
-
-# THE "SILENCE" SETTINGS (Critical for STDIO)
-# Disable the Spring Boot ASCII Art banner
-spring.main.banner-mode=off
-# Don't start Tomcat/Netty; it's faster and avoids port conflicts
-spring.main.web-application-type=servlet
-
-# DATABASE (Scaffolding Source)
-
-# Using H2 for the construction site makes it zero-config
-# spring.datasource.url=jdbc:h2:mem:construction_db;DB_CLOSE_DELAY=-1
-
-# Change from memory (mem:ledgerdb) to file (file:./data/ledgerdb)
 spring.datasource.url=jdbc:h2:file:C:/ABSOLUTE_PATH/spring-ai-test/data/ledgerdb;DB_CLOSE_DELAY=-1
-
-spring.datasource.driverClassName=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.h2.console.enabled=true
 ```
 
 # Build... and we're talking!
@@ -121,7 +94,7 @@ Cline finds the classes in the directory configured in the mcpServers JSON confi
 
 In the future you won't need to copy dependencies unless of course you run *clean* or they change.
 
-## Run the UI without the scaffolding
+## Run the application without the scaffolding that is the MCP server
 
 ```bash
 mvn clean compile -Ptest
@@ -129,8 +102,3 @@ mvn dependency:copy-dependencies -Ptest
 mvn spring-boot:run -Ptest
 ```
 
-
-# Troubleshooting
-
-## Refreshing Cline's MCP after compile
-When you run mvn compile there's little chance that Cline will notice anything changed. You will need to refresh Cline's MCP tool configuration.
