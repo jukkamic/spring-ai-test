@@ -14,7 +14,8 @@
             <PatternLayout pattern="${LOG_PATTERN}" />
         </Console>
 
-        <RollingFile name="FileLog" fileName="${LOG_FILE}" filePattern="logs/construction-site-%d{yyyy-MM-dd}.log">
+        <RollingFile name="FileLog" fileName="${LOG_FILE}"
+            filePattern="logs/construction-site-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="${LOG_PATTERN}" />
             <Policies>
                 <TimeBasedTriggeringPolicy />
@@ -31,6 +32,13 @@
 
             <Root level="info">
                 <AppenderRef ref="ConsoleDev" level="warn" />
+                <AppenderRef ref="FileLog" level="info" />
+            </Root>
+        </SpringProfile>
+
+        <SpringProfile name="test">
+            <Root level="info">
+                <AppenderRef ref="ConsoleProd" level="info" />
                 <AppenderRef ref="FileLog" level="info" />
             </Root>
         </SpringProfile>
