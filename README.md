@@ -111,6 +111,8 @@ mvn compile
 mvn dependency:copy-dependencies
 ```
 
+(dev profile is the default)
+
 **No need to run anything!** 
 
 Tell Cline: "Ask the construction site about it's health"
