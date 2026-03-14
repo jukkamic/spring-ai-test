@@ -71,7 +71,7 @@ Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
 # Build... and we're talking!
 
 ```bash
-mvn compile
+mvn compile -Pdev
 mvn dependency:copy-dependencies
 ```
 
