@@ -9,6 +9,8 @@ mvn dependency:copy-dependencies
 
 **No need to run anything!** 
 
+*Disclaimer: Cline actually starts the service with a ```java -cp``` command as described in the MCP configuration for Cline in this document below. When project is run by ```mvn spring-boot:run -Ptest``` the MCP related services are unavailable. The pom.xml defines default Maven profile as ```dev```. The Maven profiles set the Spring profile accordingly.*
+
 # MCP-Integrated Spring Boot Architecture
 This repository serves as a technical exploration of Model Context Protocol (MCP) integration within a standard Spring Boot environment. The project demonstrates a "Self-Documenting Scaffolding" approach, where the development environment is built directly into the application runtime.
 
