@@ -88,9 +88,7 @@ mvn dependency:copy-dependencies
 
 **No need to run anything!** 
 
-Tell Cline: "Ask the construction site about it's health"
-
-Cline finds the classes in the directory configured in the mcpServers JSON configuration. 
+Tell Cline: "Use the tool to describe database structure"
 
 In the future you won't need to copy dependencies unless of course you run *clean* or they change.
 

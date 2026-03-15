@@ -15,20 +15,12 @@
             <div class="text-sm text-slate-500" th:text="${category.materials.size()}">0</div>
         </td>
         <td class="px-6 py-4">
-            <form 
-                th:action="@{/api/categories/{id}(id=${category.id})}"
-                method="post"
-                class="inline-flex space-x-2">
-                <button 
-                    type="submit"
-                    th:attr="hx-post=@{/api/categories/{id}(id=${category.id})}, hx-target='#category-row-' + ${category.id}, hx-swap='outerHTML'"
-                    hx-post="/api/categories/1"
-                    hx-target="#category-row-1"
-                    hx-swap="outerHTML"
-                    class="inline-flex items-center px-3 py-1.5 border border-slate-300 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-colors">
-                    Save
-                </button>
-            </form>
+            <button 
+                type="submit"
+                th:attr="hx-post=@{/api/categories/{id}(id=${category.id})}, hx-target='#category-row-' + ${category.id}, hx-swap='outerHTML', hx-include='#category-name-' + ${category.id}"
+                class="inline-flex items-center px-3 py-1.5 border border-slate-300 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-colors">
+                Save
+            </button>
         </td>
     </tr>
 </th:block>
