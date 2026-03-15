@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("dev")
-public class DevHealthTools {
+public class McpHealthTools {
 
     @McpTool(description = "Check project health")
     public String checkHealth() {
