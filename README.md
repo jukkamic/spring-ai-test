@@ -45,26 +45,27 @@ You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java:
 
 In Cline panel's title bar click "MCP Servers" (small icon next to plus sign), select Configure tab and click Configure MCP Servers.
 
-Change **ABSOLUTE_PATH** (in both target/classes and target/dependency).
+Change **ABSOLUTE_PATH** in "cwd".
 
 ```json  
 {
   "mcpServers": {
     "java-construction-site": {
+      "autoApprove": [],
       "disabled": false,
       "timeout": 60,
       "type": "stdio",
       "command": "java",
+      "cwd": "C:/ABSOLUTE_PATH/spring-ai-test",
       "args": [
         "-Dspring.profiles.active=dev",
         "-Dspring.main.banner-mode=off",
         "-Dspring.ai.mcp.server.stdio=true",
         "-Dspring.ai.mcp.server.stdio.log-to-stderr=true",
         "-cp",
-        "C:/ABSOLUTE_PATH/target/classes;C:/ABSOLUTE_PATH/target/dependency/*",
+        "target/classes;target/dependency/*",
         "fi.kotkis.springai.RestServiceApplication"
-      ],
-      "autoApprove": []
+      ]
     }
   }
 }
