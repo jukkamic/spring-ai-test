@@ -11,6 +11,7 @@
 - **Packages:** Always check for `package fi.kotkis.springai...` at the top of new files. If missing, use the `checkPackages` tool.
 - **Database:** Use the MCP tools for any H2 database schema inspections rather than guessing table names.
 - **Logging:** All logs must go to `SYSTEM_ERR`. Never print to `SYSTEM_OUT` as it corrupts the MCP JSON pipe.
+- **Editing:** When editing files make sure to check that you have not left any "++++ REMOVE" lines behind when you're done. 
 
 ## Error Handling
 - If the MCP server returns a "Connection Closed" or "Unexpected Token" error, check if a rogue `java.exe` is hanging and suggest a restart of the MCP server. 
