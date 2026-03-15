@@ -9,8 +9,6 @@ mvn dependency:copy-dependencies
 
 **No need to run anything!** 
 
-*Disclaimer: Cline actually starts the service with a ```java -cp``` command as described in the MCP configuration for Cline in this document below. When project is run by ```mvn spring-boot:run -Ptest``` the MCP related services are unavailable. The pom.xml defines default Maven profile as ```dev```. The Maven profiles set the Spring profile accordingly.*
-
 # MCP-Integrated Spring Boot Architecture
 This repository serves as a technical exploration of Model Context Protocol (MCP) integration within a standard Spring Boot environment. The project demonstrates a "Self-Documenting Scaffolding" approach, where the development environment is built directly into the application runtime.
 
@@ -34,7 +32,7 @@ We've got Spring Boot with a built-in MCP server (Spring AI) that Cline (or prob
 
 It can give Cline insights into code or the database, or anything. 
 
-This is an MCP within the project we are working on.
+This is an MCP within the project we are working on. For introspection.
 
 # Configuration
 
@@ -65,20 +63,20 @@ Change **ABSOLUTE_PATH** in "cwd".
   "mcpServers": {
     "java-construction-site": {
       "autoApprove": [],
-      "disabled": false,
+      "disabled": true,
       "timeout": 60,
       "type": "stdio",
-      "command": "java",
-      "cwd": "C:/ABSOLUTE_PATH/spring-ai-test",
+      "command": "cmd.exe",
       "args": [
+        "/c",
+        "mvnw.cmd",
+        "-q",
+        "spring-boot:run",
+        "-Dspring-boot.run.arguments=--spring.main.web-application-type=none --server.port=0 --logging.level.root=ERROR --spring.main.log-startup-info=false --spring.ai.mcp.server.stdio=true",
         "-Dspring.profiles.active=dev",
-        "-Dspring.main.banner-mode=off",
-        "-Dspring.ai.mcp.server.stdio=true",
-        "-Dspring.ai.mcp.server.stdio.log-to-stderr=true",
-        "-cp",
-        "target/classes;target/dependency/*",
-        "fi.kotkis.springai.RestServiceApplication"
-      ]
+        "-Dspring.main.banner-mode=off"
+      ],
+      "cwd": "C:/ABSOLUTE_PATH/spring-ai-test"
     }
   }
 }
