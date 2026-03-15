@@ -21,6 +21,7 @@
 		<spring-ai.version>2.0.0-M2</spring-ai.version>
 		<!-- Test framework versions -->
 		<maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+		<mcp-spring-devtools.version>0.0.1-SNAPSHOT</mcp-spring-devtools.version>
 	</properties>
 
 	<!-- Add Spring Milestone repository for Spring AI milestone releases -->
@@ -60,6 +61,11 @@
 				<dependency>
 					<groupId>org.springframework.ai</groupId>
 					<artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>dev.scaffoldkit</groupId>
+					<artifactId>mcp-spring-devtools</artifactId>
+					<version>${mcp-spring-devtools.version}</version>
 				</dependency>
 			</dependencies>
 		</profile>
