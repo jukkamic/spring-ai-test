@@ -17,6 +17,9 @@ public class Material {
     @Column(nullable = false)
     private Integer quantity;
 
+    @Column
+    private Integer minThreshold;
+
     @Column(nullable = false)
     private Boolean isDelivered;
 
@@ -45,6 +48,15 @@ public class Material {
         this.expiryDate = expiryDate;
     }
 
+    // Constructor with all fields
+    public Material(String name, Integer quantity, Integer minThreshold, Boolean isDelivered, LocalDate expiryDate) {
+        this.name = name;
+        this.quantity = quantity;
+        this.minThreshold = minThreshold;
+        this.isDelivered = isDelivered;
+        this.expiryDate = expiryDate;
+    }
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -68,6 +80,14 @@ public class Material {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Integer getMinThreshold() {
+        return minThreshold;
+    }
+
+    public void setMinThreshold(Integer minThreshold) {
+        this.minThreshold = minThreshold;
     }
 
     public Boolean getIsDelivered() {

@@ -4,10 +4,12 @@ import fi.kotkis.springai.domain.Category;
 import fi.kotkis.springai.domain.CategoryRepository;
 import fi.kotkis.springai.domain.Material;
 import fi.kotkis.springai.domain.MaterialRepository;
+import fi.kotkis.springai.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +22,9 @@ public class MaterialController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private MaterialService materialService;
 
     // GET endpoint to list all materials
     @GetMapping
@@ -63,5 +68,21 @@ public class MaterialController {
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         Category savedCategory = categoryRepository.save(category);
         return ResponseEntity.ok(savedCategory);
+    }
+
+    // GET endpoint to get the count of low-stock materials
+    @GetMapping("/low-stock/count")
+    public ResponseEntity<Map<String, Integer>> getLowStockCount() {
+        List<Material> lowStockMaterials = materialService.findLowStockMaterials();
+        Map<String, Integer> response = new HashMap<>();
+        response.put("count", lowStockMaterials.size());
+        return ResponseEntity.ok(response);
+    }
+
+    // GET endpoint to get list of low-stock materials
+    @GetMapping("/low-stock")
+    public ResponseEntity<List<Material>> getLowStockMaterials() {
+        List<Material> lowStockMaterials = materialService.findLowStockMaterials();
+        return ResponseEntity.ok(lowStockMaterials);
     }
 }
