@@ -71,13 +71,6 @@ Change **ABSOLUTE_PATH** in "cwd".
 }
 ```
 
-## Spring properties
-Edit /main/resources/application-test.properties, change **ABSOLUTE_PATH**
-
-```bash
-spring.datasource.url=jdbc:h2:file:C:/ABSOLUTE_PATH/spring-ai-test/data/ledgerdb;DB_CLOSE_DELAY=-1
-```
-
 # Build... and we're talking!
 
 ```bash
