@@ -1,3 +1,14 @@
+# Build... and we're talking!
+
+```bash
+mvn compile
+mvn dependency:copy-dependencies
+```
+
+**Tell Cline:** "Use the tool to describe project's pom.xml dependencies"
+
+**No need to run anything!** 
+
 # MCP-Integrated Spring Boot Architecture
 This repository serves as a technical exploration of Model Context Protocol (MCP) integration within a standard Spring Boot environment. The project demonstrates a "Self-Documenting Scaffolding" approach, where the development environment is built directly into the application runtime.
 
@@ -70,21 +81,6 @@ Change **ABSOLUTE_PATH** in "cwd".
   }
 }
 ```
-
-# Build... and we're talking!
-
-```bash
-mvn compile
-mvn dependency:copy-dependencies
-```
-
-(dev profile is the default)
-
-**No need to run anything!** 
-
-Tell Cline: "Use the tool to describe database structure"
-
-In the future you won't need to copy dependencies unless of course you run *clean* or they change.
 
 ## Run the application without the scaffolding that is the MCP server
 
