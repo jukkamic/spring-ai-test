@@ -3,9 +3,10 @@
 ```bash
 mvn compile
 mvn dependency:copy-dependencies
+mvn spring-boot:run
 ```
 
-**Tell Cline:** "Use the tool to describe project's pom.xml dependencies"
+**Tell Cline:** "Use the tool to describe project's dependencies"
 
 **No need to run anything!** 
 
@@ -56,27 +57,15 @@ You may need to open Command Palette ( **Cmd + Shift + P** ) and run Run: "Java:
 
 In Cline panel's title bar click "MCP Servers" (small icon next to plus sign), select Configure tab and click Configure MCP Servers.
 
-Change **ABSOLUTE_PATH** in "cwd".
 
 ```json  
 {
   "mcpServers": {
     "java-construction-site": {
-      "autoApprove": [],
-      "disabled": true,
+      "disabled": false,
       "timeout": 60,
-      "type": "stdio",
-      "command": "cmd.exe",
-      "args": [
-        "/c",
-        "mvnw.cmd",
-        "-q",
-        "spring-boot:run",
-        "-Dspring-boot.run.arguments=--spring.main.web-application-type=none --server.port=0 --logging.level.root=ERROR --spring.main.log-startup-info=false --spring.ai.mcp.server.stdio=true",
-        "-Dspring.profiles.active=dev",
-        "-Dspring.main.banner-mode=off"
-      ],
-      "cwd": "C:/ABSOLUTE_PATH/spring-ai-test"
+      "type": "sse",
+      "url": "http://localhost:9090/sse"
     }
   }
 }
