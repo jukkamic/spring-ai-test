@@ -8,12 +8,16 @@ mvn spring-boot:run
 
 **Tell Cline:** "Use the tool to describe project's dependencies"
 
-**No need to run anything!** 
+## ...unless you're developer...
 
-# MCP-Integrated Spring Boot Architecture
-This repository serves as a technical exploration of Model Context Protocol (MCP) integration within a standard Spring Boot environment. The project demonstrates a "Self-Documenting Scaffolding" approach, where the development environment is built directly into the application runtime.
+You will need to ```mvn install``` the ScaffoldKit dependency from <https://github.com/jukkamic/spring-mcp-devtools>.
+
+## MCP-Integrated Spring Boot Architecture
+
+This project is a playground for exploring MCP server integration within a Spring-Boot project. This allows for coding agent to use introspection tools provided by the MCP (ScaffoldKit library) in order to save in context size and to provide deterministic results.
 
 ## Architectural Focus
+
 The primary objective of this project is to bridge the gap between an LLM-based assistant and a running Java process. By implementing a dual-interface system—Standard I/O for MCP and a Servlet container for REST—the application allows the AI to:
 
 **Self-Diagnose:** Inspect the Spring ApplicationContext to understand its own wiring.
@@ -70,6 +74,8 @@ In Cline panel's title bar click "MCP Servers" (small icon next to plus sign), s
   }
 }
 ```
+
+***This project is not Cline dependent!*** Don't worry if you use a different agent. All you need is the URL configuration in place. 
 
 ## Run the application without the scaffolding that is the MCP server
 
