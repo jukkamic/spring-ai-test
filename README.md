@@ -85,3 +85,9 @@ mvn dependency:copy-dependencies -Ptest
 mvn spring-boot:run -Ptest
 ```
 
+## Docker build for Kubernetes
+
+```bash
+mvn clean package -Ptest
+docker build -t spring-webapp:v4 .
+```
